@@ -1,5 +1,5 @@
 import numpy as np
-from src.minimd.system import ParticleSystem
+from minimd.system import ParticleSystem
 
 def test_particle_system_shapes():
     positions = [[0,0,0], [1,1,1]]
@@ -12,4 +12,4 @@ def test_particle_system_shapes():
     assert system.velocities.shape == (2,3)
     assert system.masses.shape == (2,)
 
-    
+
