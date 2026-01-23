@@ -1,15 +1,33 @@
 import numpy as np
 from minimd.system import ParticleSystem
+from minimd.integrators import EulerIntegrator 
 
-def test_particle_system_shapes():
-    positions = [[0,0,0], [1,1,1]]
-    velocities = [[0,0,0], [0,0,0]]
-    masses = [1.0, 2.0]
+def test_euler_integrator_constant_force():
+    """
+    A single particle under constant force 
+    should accelerate and move in the force directions
+    """
+
+    positions = [[0.0, 0.0, 0.0]]
+    velocities = [[0.0, 0.0, 0.0]]
+    masses = [1.0]
 
     system = ParticleSystem(positions, velocities, masses)
-    assert system.num_particles() == 2
-    assert system.positions.shape == (2,3)
-    assert system.velocities.shape == (2,3)
-    assert system.masses.shape == (2,)
+    integrator = EulerIntegrator()
+
+    force = np.array([[1.0, 0.0, 0.0]]) # constant force in x
+    dt = 0.1 
+
+    integrator.step(system, force, dt)
+
+    # After one step:
+
+    # v = a * dt = 1.0 * 0.1 
+    assert np.allclose(system.velocities, [[0.1, 0.0, 0.0]]) 
+
+    # x = v * dt = 0.1 * 0.1
+    assert np.allclose(system.positions, [[0.01, 0.0, 0.0]] ) 
+
+    # np.allclose() is used to avoid floating point precision issues
 
 
