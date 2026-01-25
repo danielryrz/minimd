@@ -3,6 +3,8 @@ Integrator implementation for minimd.
 """
 import numpy as np
 
+from minimd.forces import lennard_jones_forces
+
 class EulerIntegrator:
     """
     Explicit Euler time integration - used as a starting intergrator for simplicity and testing.
