@@ -21,7 +21,7 @@ def lennard_jones_forces(positions, epsilon = 1.0, sigma = 1.0):
 
     Returns
     -----------
-    :return forces : np.ndarray, shape (N,3 )
+    :return forces : np.ndarray, shape (N,3)
     """
 
     n = positions.shape[0]
