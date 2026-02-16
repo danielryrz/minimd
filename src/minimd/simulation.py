@@ -2,6 +2,7 @@
 Placeholder for Simulation loop.
 """
 from minimd.forces import lennard_jones_forces
+from minimd.potential_energy import lennard_jones_potential
 
 class Simulation:
     def __init__(self, system, integrator, force_fn=lennard_jones_forces):
@@ -15,3 +16,10 @@ class Simulation:
 
         for _ in range(steps):
             forces = self.integrator.step(self.system, forces, dt, self.force_fn)
+    
+    def total_energy(system):
+        kinetic = system.kinetic_energy()
+        potential = lennard_jones_potential(system.positions)
+        return kinetic + potential
+    
+    

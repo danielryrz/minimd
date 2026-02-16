@@ -26,3 +26,8 @@ class ParticleSystem:
     def num_particles(self):
         """Return the number of particles"""
         return self.positions.shape[0]
+    
+    def kinetic_energy(self):
+        """Compute total kinetic energy of the system"""
+        ke = 0.5 * np.sum(self.masses * np.sum(self.velocities**2, axis=1)) # correct but for large systems may be numerically unstable (np.einsum could help)
+        return ke

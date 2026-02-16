@@ -20,7 +20,7 @@ class EulerIntegrator:
         """
         Advance the system by one time step using Euler integration 
 
-        Args:
+        Parameters:
             system (ParticleSystem): system to update
             forces (np.ndarray): shape (N,3)
             dt (float): time step 
