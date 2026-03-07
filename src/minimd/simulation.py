@@ -16,11 +16,5 @@ class Simulation:
 
         for _ in range(steps):
             forces = self.integrator.step(self.system, forces, dt, self.force_fn)
-
-    # moved to energy.py
-    # def total_energy(system):
-    #     kinetic = system.kinetic_energy()
-    #     potential = lennard_jones_potential(system.positions)
-    #     return kinetic + potential
     
     

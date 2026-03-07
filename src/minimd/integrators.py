@@ -16,7 +16,7 @@ class EulerIntegrator:
     3) updates next step positions using next step velocities. (semi-implicit as using next step velocities)
     """
 
-    def step(self, system, forces, dt):
+    def step(self, system, forces, dt, force_fn=None):
         """
         Advance the system by one time step using Euler integration 
 
@@ -24,12 +24,15 @@ class EulerIntegrator:
             system (ParticleSystem): system to update
             forces (np.ndarray): shape (N,3)
             dt (float): time step 
+            force_fn (callable, optional): not used for Euler but included for compatibility with Simulation loop
         """
         
         accelerations = forces / system.masses[:, np.newaxis]
 
         system.velocities += accelerations * dt 
         system.positions += system.velocities * dt
+
+        return forces
 
 
 class VelocityVerletIntegrator:
