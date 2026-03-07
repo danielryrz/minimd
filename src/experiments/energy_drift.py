@@ -2,7 +2,8 @@ import numpy as np
 from minimd.system import ParticleSystem
 from minimd.forces import lennard_jones_forces
 from minimd.integrators import EulerIntegrator, VelocityVerletIntegrator
-from minimd.simulation import Simulation, total_energy
+from minimd.simulation import Simulation
+from minimd.energy import total_energy 
 
 print("Running energy drift experiment...")
 
