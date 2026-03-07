@@ -4,6 +4,8 @@ from minimd.forces import lennard_jones_forces
 from minimd.integrators import EulerIntegrator, VelocityVerletIntegrator
 from minimd.simulation import Simulation, total_energy
 
+print("Running energy drift experiment...")
+
 positions = [[0,0,0], [1.1, 0, 0]]
 velocities = [[0,0,0], [0,0.1,0]]
 masses = [1.0, 1.0]
