@@ -1,4 +1,6 @@
 import numpy as np
+import matplotlib.pyplot as plt
+
 from minimd.system import ParticleSystem
 from minimd.forces import lennard_jones_forces
 from minimd.integrators import EulerIntegrator, VelocityVerletIntegrator
@@ -30,3 +32,17 @@ verlet_E = run(VelocityVerletIntegrator())
 
 print("Euler energy drift:", euler_E[-1] - euler_E[0])
 print("Verlet energy drift:", verlet_E[-1] - verlet_E[0])
+
+# plotting
+plt.figure(figsize=(8,5))
+
+plt.plot(euler_E, label="Euler")
+plt.plot(verlet_E, label="Velocity Verlet")
+
+plt.xlabel("Time step")
+plt.ylabel("Total Energy")
+plt.title("Energy Drift Comparison")
+
+plt.legend()
+plt.tight_layout()
+plt.show()
